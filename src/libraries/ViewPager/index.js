@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import Scroller from '../Scroller';
 import { createResponder } from '../GestureResponder';
 
-const MIN_FLING_VELOCITY = 0.5;
+let MIN_FLING_VELOCITY = 0.5;
 
 // Dimensions are only used initially.
 // onLayout should handle orientation swap.
@@ -193,6 +193,11 @@ export default class ViewPager extends PureComponent {
     }
 
     settlePage (vx) {
+        // 由于安卓左右滑动有厚重感，MIN_FLING_VELOCITY是速率，降低速率提高灵敏度
+        if(Platform.OS!=="ios"){
+            MIN_FLING_VELOCITY = 0.3
+        }
+        
         const { pageDataArray } = this.props;
 
         if (vx < -MIN_FLING_VELOCITY) {
