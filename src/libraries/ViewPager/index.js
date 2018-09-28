@@ -4,7 +4,8 @@ import {
     FlatList,
     ViewPropTypes,
     InteractionManager,
-    Dimensions
+    Dimensions,
+    Platform,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Scroller from '../Scroller';
