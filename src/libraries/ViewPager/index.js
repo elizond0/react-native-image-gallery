@@ -293,7 +293,9 @@ export default class ViewPager extends PureComponent {
     }
 
     keyExtractor (item, index) {
-        return index;
+        // resolve Warning : Failed child context type: Invalid child context 'virtualizedCell.cellKey' 
+        // of type 'number' supplied to 'CellRenderer', expected 'string'
+        return index.toString();
     }
 
     renderRow ({ item, index }) {
